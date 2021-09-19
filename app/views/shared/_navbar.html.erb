@@ -1,0 +1,11 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Appointment System</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <%= link_to "My appointments", doctor_appointments_path, class: ['nav-link', params[:controller] == 'appointments' && params[:action] == 'index' ? 'active' : ''] %>
+        <%= link_to "Fix appointment", new_doctor_appointment_path, class: ['nav-link', params[:controller] == 'appointments' && params[:action] == 'new' ? 'active' : ''] %>
+      </div>
+    </div>
+  </div>
+</nav>

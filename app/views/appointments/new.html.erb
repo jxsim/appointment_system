@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Fix appointment</h1>
+  <%= form_with(url: doctor_appointments_path) do |form| %>
+    <div class="mb-3">
+      <%= form.label :appointment_datetime, class: 'form-label' %>
+      <%= form.datetime_local_field :appointment_datetime, value: Time.zone.now.to_s(:form), class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :patient_id, 'Patient', class: 'form-label' %>
+      <%= form.select :patient_id, Patient.pluck(:name, :id), {}, { class: 'form-select' } %>
+    </div>
+    <div>
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

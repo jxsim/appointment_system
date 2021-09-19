@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>My Appointments</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>S/N</th>
+        <th>Appointment Date and Time</th>
+        <th>Patient</th>
+        <th>Doctor</th>
+        <th>Cancel</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @appointments.each_with_index do |appointment, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= appointment.appointment_datetime %> - <%= appointment.appointment_datetime + 1.hour %></td>
+          <td><%= appointment.patient.name %>
+          <td><%= appointment.doctor.name %>
+          <td><%= button_to 'Cancel', doctor_appointment_path(doctor_id: appointment.doctor_id, id: appointment.id), class: 'btn btn-primary', method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
