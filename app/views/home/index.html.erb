@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Login</h1>
+  
+  <%= form_with(url: login_path) do |form| %>
+    <div class="mb-3">
+      <%= form.label :doctor_id, 'Doctor', class: 'form-label' %>
+      <%= form.select :doctor_id, Doctor.pluck(:name, :id), {}, { class: 'form-select' } %>
+    </div>
+    <div>
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
