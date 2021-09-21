@@ -7,7 +7,7 @@
       <%= form.select :doctor_id, Doctor.pluck(:name, :id), {}, { class: 'form-select' } %>
     </div>
     <div>
-      <%= form.submit class: 'btn btn-primary' %>
+      <%= form.submit 'Login', class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>

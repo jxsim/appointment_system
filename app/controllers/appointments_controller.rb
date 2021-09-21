@@ -6,6 +6,8 @@ class AppointmentsController < ApplicationController
     else
       @appointments = doctor.appointments
     end
+  rescue
+    redirect_to action: :index
   end
 
   def new
@@ -13,9 +15,14 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    Appointment.create(params.permit(:appointment_datetime, :patient_id, :doctor_id))
+    @appointment = Appointment.new(params.permit(:appointment_datetime, :patient_id, :doctor_id))
 
-    redirect_to action: :index
+    if @appointment.invalid?
+      render 'new'
+    else
+      @appointment.save!
+      redirect_to action: :index
+    end
   end
 
   def destroy
